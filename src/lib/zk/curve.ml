@@ -22,6 +22,9 @@ open Yojson_conv
 module type G = sig
   type t
   type fr
+
+  val order : Z.t
+
   val zero : t
   val one : t
   val ( ~- ) : t -> t
@@ -196,6 +199,8 @@ module Bls12_381 = struct
     include G1
     include ExtendG(G1)
 
+    let order = Fr.order
+
     let yojson_of_t g = JSON.Conv.yojson_of_bytes @@ to_compressed_bytes g
 
     let t_of_yojson j = of_compressed_bytes_exn @@ JSON.Conv.bytes_of_yojson j
@@ -204,6 +209,8 @@ module Bls12_381 = struct
   module G2 = struct
     include G2
     include ExtendG(G2)
+
+    let order = Fr.order
 
     let yojson_of_t g = JSON.Conv.yojson_of_bytes @@ to_compressed_bytes g
 
