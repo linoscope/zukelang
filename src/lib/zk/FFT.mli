@@ -22,6 +22,7 @@ module Make(F : sig
   val polynomial_mul : F.t Polynomial.t -> F.t Polynomial.t -> F.t Polynomial.t
 end
 
+(** FFT over $\mathbb{C}$ for testing purpose *)
 module FFT_C : sig
 
   module Polynomial : module type of Polynomial.Make(C)

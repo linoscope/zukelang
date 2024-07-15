@@ -1,4 +1,6 @@
 (tests
-  (names main)
+  (names main
+  	 test_fft
+  )
   (libraries zk)
   (flags :standard -warn-error -9-32-34-37))
